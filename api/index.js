@@ -17,7 +17,7 @@ app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI , {
+mongoose.connect("mongodb+srv://bhumikapatil2204:Bhumika%402204@cluster0.95sim8h.mongodb.net/AkatsukiProjectHub" , {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -31,7 +31,7 @@ const ProjectSchema = new mongoose.Schema({
   coverImagePath: { type: String }, // For local storage
   liveLink: { type: String },
   description: { type: String, required: true },
-  techStack: { type: [String], default: [] },
+  techStack: { type: [String] },
   price: { type: String },
   details: { type: String, required: true },
   createdAt: { type: Date, default: Date.now }
