@@ -17,7 +17,7 @@ app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // MongoDB Connection
-mongoose.connect("mongodb+srv://bhumikapatil2204:Bhumika%402204@cluster0.95sim8h.mongodb.net/AkatsukiProjectHub" , {
+mongoose.connect(process.env.MONGODB_URI , {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
