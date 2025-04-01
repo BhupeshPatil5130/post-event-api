@@ -31,7 +31,7 @@ const ProjectSchema = new mongoose.Schema({
   coverImagePath: { type: String }, // For local storage
   liveLink: { type: String },
   description: { type: String, required: true },
-  techStack: { type: [String] },
+  techStack: { type: String }, // Changed from array to string
   price: { type: String },
   details: { type: String, required: true },
   createdAt: { type: Date, default: Date.now }
@@ -121,7 +121,7 @@ app.post('/api/projects/create', async (req, res) => {
       coverImagePath: coverImagePath,
       liveLink: formData.liveLink,
       description: formData.description,
-      techStack: formData.techStack || [],
+      techStack: formData.techStack || '', // Ensure techStack is a string
       price: formData.price,
       details: formData.details
     });
