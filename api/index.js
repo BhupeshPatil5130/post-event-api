@@ -151,7 +151,11 @@ app.get('/api/projects', async (req, res) => {
 // Get project details by ID
 app.get('/api/projects/:id', async (req, res) => {
   try {
-    const project = await Project.findById(req.params.id);
+    const projectId = req.params.id.replace(/^:/, ""); // Remove leading `:` if present
+if (!mongoose.Types.ObjectId.isValid(projectId)) {
+  return res.status(400).json({ error: 'Invalid project ID format' });
+}
+const project = await Project.findById(projectId);
     if (!project) {
       return res.status(404).json({ error: 'Project not found' });
     }
